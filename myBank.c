@@ -13,8 +13,9 @@ int check_input(int account_number){
 }
 
 void open_account(double amount){
-if(count<50){
-    for(int i=0;i<50;i++){
+int i;
+if(count<51){
+    for(i=0;i<50;i++){
             if(arr[i][1] == 0){
                arr[i][1]=1;
                arr[i][0]=amount;
@@ -22,77 +23,89 @@ if(count<50){
             }
 
     }
-    int account_number=count+900;
-printf("The new account  number is %d\n",account_number);
+    int account_number=i+901;
+printf("The new account number is %d\n",account_number);
 
 count++;
-} else ("There are 50 accounts, can't open another one");
+} 
+else{
+printf("There are 50 accounts, can't open another one\n");
+} 
 
 
 }
 
-
 void check_balance(int account_number){
 
 if(check_input(account_number)==1){
-    if (arr[account_number][1]==1)
+    if (arr[(account_number-1)%100][1]==1)
     printf("Your balance in the account %d is %.2lf\n",account_number,arr[(account_number-1)%100][0]);
 else printf("This account is closed\n");
 
 }
 else{
-    printf("Invalid input");   
+    printf("Invalid input\n");   
 }
 }
 
 void new_deposite(int account_number, double deposite){
-if(check_input(account_number)==1){
-    if (arr[account_number][1]==1) {
-    arr[account_number][0]+=deposite;
+if(check_input(account_number)==1 && deposite>0){
+    if (arr[(account_number-1)%100][1]==1 ) {
+    arr[(account_number-1)%100][0]+=deposite;
    printf("Your balance in the account after the deposite %d is %.2lf\n",account_number,arr[(account_number-1)%100][0]);
 }
-else printf("This account is closed");
+else printf("This account is closed\n");
 }
 else{
-    printf("Invalid input"); 
+    printf("Invalid input\n"); 
  }
 }
 
 void new_withdrawal(int account_number,double amount){
-if(check_input(account_number)==1){
-    if (arr[account_number][1]==1 && arr[account_number][0]>=amount) {
-        arr[account_number][0]-=amount;
+if(check_input(account_number)==1 && amount>0){
+    if (arr[(account_number-1)%100][1]==1){
+    if (arr[(account_number-1)%100][0]>=amount) {
+        arr[(account_number-1)%1000][0]-=amount;
        printf("Your balance in the account after the withdraw %d is %.2lf\n",account_number,arr[(account_number-1)%100][0] );
 }
-    else printf("This account is closed or not enough money\n");
+    else printf("There is not enough money in your account\n");
 }
-else{
-     printf("Invalid input"); 
+else printf ("This account is closed\n");
+}else{
+     printf("Invalid input\n"); 
  }
 }
 
 void close_account(int account_number){
     if(check_input(account_number) == 1){
-    if (arr[(account_number-1)%100][1] == 1){
+       if (arr[(account_number-1)%100][1] == 1){
         arr[(account_number-1)%100][1]=0;
         arr[(account_number-1)%100][0]=0;
         count--;
-    }
-    else ("This account is closed");  
+        printf("The account %d was succesfully closed\n",account_number);
+       }
+      else {
+          printf("This account is already closed\n");  
+      }
     }
     else{
-        printf("Invalid input");
+        printf("Invalid input\n");
     }    
     
 }
 
 void add_interest_rate(double interest_rate){
 double sum =0;
+if(interest_rate>0){
 for(int i=0;i<50;i++){
     if(arr[i][1]==1){
         sum=arr[i][0]* interest_rate;
         arr[i][0]+=sum;
     }
+}
+}
+else{
+    printf("Invalid input\n");
 }
 }
 
