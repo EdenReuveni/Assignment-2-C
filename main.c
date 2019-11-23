@@ -22,7 +22,7 @@ int main(){
     printf("Press E for closing all accounts and exiting the program\n");
 
     scanf(" %c", &transaction);
-   while(transaction != 'E'){
+    while(transaction != 'E'){
    
     switch (transaction)
     {

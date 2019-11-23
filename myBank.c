@@ -14,6 +14,7 @@ int check_input(int account_number){
 
 void open_account(double amount){
 int i;
+if(amount>0){
 if(count<51){
     for(i=0;i<50;i++){
             if(arr[i][1] == 0){
@@ -25,6 +26,10 @@ if(count<51){
     }
     int account_number=i+901;
 printf("The new account number is %d\n",account_number);
+}
+else{
+    printf("Invalid input\n");
+}
 
 count++;
 } 
