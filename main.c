@@ -47,10 +47,11 @@ int main(){
        break;
 
     case 'W':
-     printf("Please enter your account number\n ");
+     printf("Please enter your account number\n");
      scanf("%d" ,&account_number);
      printf("And the amount you would like to withdrawal \n");
      scanf("%lf" ,&withdrawal_amount);
+     printf("the account number is %d and the money is %lf",account_number,withdrawal_amount);
      new_withdrawal(account_number,withdrawal_amount);  
      break;
     

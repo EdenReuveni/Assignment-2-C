@@ -1,20 +1,25 @@
-CC=gcc
-FLAG=-Wall
-AR=ar
-fPIC=-fPIC
-all: myBanks mains
 
 
-myBanks: myBanks.a
-mains: main.o myBanks.a
-	$(CC) $(FLAG) -g -o mains main.o myBanks.a
-myBanks.a: myBank.c 
-	$(AR) rcs -o myBanks.a mybank.o
-myBank.o:myBank.c myBank.h
-	$(CC) $(FLAG) $(fPIC) -g -c  myBank.c
+all: myBanklibary mains
+
+myBanklibary:myBanklibary.a
+
+mains: main.o myBanklibary.a
+	gcc -Wall -g -o mains main.o myBanklibary.a
+
+myBanklibary.a: myBank.o
+	ar rcs -o myBanklibary.a myBank.o
 
 main.o:myBank.h main.c
-	$(CC) $(FLAG) -g -c main.c
-.PHONY: myBanks clean all
+	gcc -Wall -g -c -FPIC main.c
+
+myBank.o:myBank.c
+	gcc -Wall -g -c -FPIC myBank.c
+
+
+
+
 clean:
 	rm -f *.o *.a *.so mains maind
+
+

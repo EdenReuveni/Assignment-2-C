@@ -28,13 +28,13 @@ if(count<51){
 printf("The new account number is %d\n",account_number);
 }
 else{
-    printf("Invalid input\n");
+  printf("There are 50 accounts, can't open another one\n");
 }
 
 count++;
 } 
 else{
-printf("There are 50 accounts, can't open another one\n");
+  printf("Invalid input\n");
 } 
 
 
@@ -67,6 +67,7 @@ else{
 }
 
 void new_withdrawal(int account_number,double amount){
+printf("hello world");
 if(check_input(account_number)==1 && amount>0){
     if (arr[(account_number-1)%100][1]==1){
     if (arr[(account_number-1)%100][0]>=amount) {
