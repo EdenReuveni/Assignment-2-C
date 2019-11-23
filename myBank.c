@@ -67,16 +67,15 @@ else{
 }
 
 void new_withdrawal(int account_number,double amount){
-printf("hello world");
 if(check_input(account_number)==1 && amount>0){
     if (arr[(account_number-1)%100][1]==1){
     if (arr[(account_number-1)%100][0]>=amount) {
-        arr[(account_number-1)%1000][0]-=amount;
+        arr[(account_number-1)%100][0]-=amount;
        printf("Your balance in the account after the withdraw %d is %.2lf\n",account_number,arr[(account_number-1)%100][0] );
 }
     else printf("There is not enough money in your account\n");
 }
-else printf ("This account is closed\n");
+   else printf ("This account is closed\n");
 }else{
      printf("Invalid input\n"); 
  }
