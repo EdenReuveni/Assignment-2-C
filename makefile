@@ -16,7 +16,7 @@ main.o:myBank.h main.c
 myBank.o:myBank.c
 	gcc -Wall -g -c -FPIC myBank.c
 
-
+.PHONY: all clean myBanklibary
 
 
 clean:

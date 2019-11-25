@@ -1,6 +1,10 @@
 #include <stdio.h>
-static double arr[50][2];
+#define ROWS 50
+#define COLS 2
+static double arr[ROWS][COLS];
 static int count=1;
+
+
 
 
 int check_input(int account_number){
@@ -115,7 +119,8 @@ else{
 }
 
 void print_all_open_accounts(){
-    
+    if (count==1)
+        printf("There are no open accounts at the bank\n");
 for(int i=0;i<50;i++){
     if(arr[i][1]==1){
     printf("Account number is: %d and the balance is: %.2lf\n", i+901,arr[i][0]);

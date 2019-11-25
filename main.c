@@ -28,41 +28,64 @@ int main(){
     {
     case 'O' :
      printf("In order to open an account, please insert the initial deposit\n");
-     scanf("%lf",&initial_deposit);
+     if(scanf("%lf",&initial_deposit)!=1){
+        break;
+     }
+     initial_deposit=(int)(initial_deposit*100);
+     initial_deposit/=100;
      open_account(initial_deposit);   
         break;
 
     case 'B' :
      printf("In order to check your balance, please enter your account number\n");
-     scanf("%d",&account_number);
+     if(scanf("%d",&account_number)!=1){
+         break;
+     }
      check_balance(account_number);       
         break;
 
     case 'D':
      printf("Please enter your account number\n");
-     scanf("%d" ,&account_number);
+     if(scanf("%d" ,&account_number)!=1)
+     {
+         break;
+     }
      printf("And the amount you would like to deposite\n");
-     scanf("%lf" ,&deposite_ammount);
+     if(scanf("%lf" ,&deposite_ammount)!=1){
+         break;
+     }
+     deposite_ammount = (int)(deposite_ammount*100);
+     deposite_ammount/=100;
      new_deposite(account_number,deposite_ammount);  
        break;
 
     case 'W':
      printf("Please enter your account number\n");
-     scanf("%d" ,&account_number);
+     if(scanf("%d" ,&account_number)!=1){
+         break;
+     }
      printf("And the amount you would like to withdrawal\n");
-     scanf("%lf" ,&withdrawal_amount);
+     if(scanf("%lf" ,&withdrawal_amount)!=1){
+         break;
+     }
+     withdrawal_amount = (int)(withdrawal_amount*100);
+     withdrawal_amount/=100;
      new_withdrawal(account_number,withdrawal_amount);  
      break;
     
     case 'C':
             printf("Please enter your account number\n");
-            scanf("%d",&account_number);
+            if(scanf("%d",&account_number)){
+                break;
+            }
             close_account(account_number);
             break;
 
     case 'I':
         printf("Please insert the interest rate\n");
-        scanf("%lf",&interest_rate);
+        if(scanf("%lf",&interest_rate)!=1){
+            break;
+        }
         add_interest_rate(interest_rate/100);
         break;
 
