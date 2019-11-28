@@ -75,7 +75,7 @@ int main(){
     
     case 'C':
             printf("Please enter your account number\n");
-            if(scanf("%d",&account_number)){
+            if(scanf("%d",&account_number)!=1){
                 break;
             }
             close_account(account_number);
